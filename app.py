@@ -17,5 +17,11 @@ def main():
 def dbs():
     return render_template("dbs.html")
 
+@app.route("/dbsP", methods=["GET", "POST"])
+def dbsP():
+    q = float(request.form.get("q"))
+    r = dbsModel.predict([[q]])
+    return(render_template("dbsP.html", r = r[0][0]))
+    
 if __name__ == "__main__":
     app.run()
