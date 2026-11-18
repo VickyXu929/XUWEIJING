@@ -1,23 +1,23 @@
 #web app
 
 import joblib
-from flask import Flask, render_template, request
+from flask import Flask, request, render_template
 
 dbsModel = joblib.load("DBS_SGD_model.pkl")
 app = Flask(__name__)
 
-@app.route("/",methods=["GET","POST"])
+@app.route("/", methods=["GET", "POST"])
 def index():
-    q = request.form.get("q")
-    return render_template("index.html")
+    return(render_template("index.html"))
 
-@app.route("/main",methods=["GET","POST"])
+@app.route("/main", methods=["GET", "POST"])
 def main():
-    return render_template("main.html")
+    q = request.form.get("q")
+    return(render_template("main.html"))
 
-@app.route("/dbs",methods=["GET","POST"])
+@app.route("/dbs", methods=["GET", "POST"])
 def dbs():
-    return render_template("dbs.html")
+    return(render_template("dbs.html"))
 
 @app.route("/dbsP", methods=["GET", "POST"])
 def dbsP():
